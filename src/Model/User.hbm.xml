@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 27, 2016 5:26:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.User" table="user" catalog="criticfi_mynewdata" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nameUser" type="string">
+            <column name="name_user" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="30" not-null="true" />
+        </property>
+        <property name="dateBirth" type="date">
+            <column name="date_birth" length="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
