@@ -9,8 +9,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
-import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
+import java.io.FileWriter;
+import java.lang.reflect.Type;
 /**
  *
  * @author Anthony
@@ -20,30 +21,34 @@ public class JSONclass {
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String USER_LOG_GET_URL = "http://jsontest.localhost/public/js/user_log.txt";
     private static final String ITEMS_GET_URL = "http://jsontest.localhost/public/js/items.txt";
-    private static final String POST_URL = "http://jsontest.localhost/index.php/welcome/addJSON";
+    private static final String POST_URL = "http://jsontest.localhost/index.php/welcome/addItemJson";
  
     public void AddItemJSON() throws IOException{
-//        Gson g = new Gson();
-//        String output = sendGET(ITEMS_GET_URL);
-//        List<Item> list = new ArrayList<Item>();
-//        if(output != "")
-//        {
-//            Type items = new TypeToken<List<Item>>() {}.getType();
-//            list = g.fromJson(output, items);
-//        }
         Item item = new Item();
-        List<Item> listo = item.items();
-//        Gson g = new Gson();
-//        Type items = new TypeToken<List<Item>>() {}.getType();
-//        ArrayList<Item> listOfItems = g.fromJson(listo.toString(), items);
-        
-        
-        
-        //list.add(item);
-        //String json = "array=" + g.toJson(listOfItems);
-        System.out.println(listo);
-//        System.out.println(json);
-//        sendPOST(json, POST_URL);
+        Gson g = new Gson();
+        List<Item> list = new ArrayList<Item>();
+        list = item.items();
+        List<Item> listOfItems = new ArrayList<Item>();
+        Integer counter = list.size();
+        Integer i = 0;
+        while(i < counter)
+        {
+            listOfItems.add(list.get(i));
+            i++;
+        }
+        String json = "array=" + listOfItems.toString();
+        sendPOST(json, POST_URL);
+        writeJsonToFile(listOfItems.toString());
+    }
+    
+    public List<Item> getItemsJSON() throws IOException
+    {
+        Gson g = new Gson();
+        String output = sendGET(ITEMS_GET_URL);
+        System.out.println(output);
+        Type items = new TypeToken<List<Item>>() {}.getType();
+        List<Item> listOfItems = g.fromJson(output, items);
+        return listOfItems;
     }
     
     private static String sendGET(String url) throws IOException {
@@ -101,10 +106,18 @@ public class JSONclass {
             }
             in.close();
  
-            // print result
-            //System.out.println(response.toString());
+             //print result
+            System.out.println(response.toString());
         } else {
-            //System.out.println("POST request not worked");
+            System.out.println("POST request not worked");
         }
+    }
+    
+    private static void writeJsonToFile(String Json) throws IOException
+    {
+        try (FileWriter file = new FileWriter("./items.txt")) {
+			file.write(Json);
+			System.out.println("Successfully Copied JSON Object to File...");
+		}
     }
 }

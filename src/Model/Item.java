@@ -19,11 +19,17 @@ public class Item  implements java.io.Serializable {
 
      private Integer id;
      private Medium medium;
-     private Integer author;
+     private String author;
      private Date dateReleased;
      private String title;
      private Double rating;
      private String synopsis;
+     
+     @Override
+    public String toString(){
+        return "{\"id\":\""+this.id+"\",\"medium\":\""+this.medium.getTypeMedium()+"\",\"title\":\""+this.title+"\",\"author\":\""+this.author+"\",\"dateReleased\":\""+this.dateReleased+"\""
+                + ",\"rating\":\""+this.rating+"\",\"synopsis\":\""+this.synopsis+"\"}";
+    }
 
     public Item() {
     }
@@ -66,7 +72,7 @@ public class Item  implements java.io.Serializable {
         return null;
     }
     
-    public Item(Medium medium, Date dateReleased, String title, Double rating, String synopsis) {
+    public Item(Integer id,Medium medium, Date dateReleased, String title, Double rating, String synopsis, String author) {
         this.medium = medium;
         this.dateReleased = dateReleased;
         this.title = title;
@@ -74,13 +80,15 @@ public class Item  implements java.io.Serializable {
         this.synopsis = synopsis;
     }
 	
-    public Item(Medium medium, Date dateReleased, String title, Double rating) {
+    public Item(Medium medium, Date dateReleased, String title, Double rating, String synopsis, String author) {
         this.medium = medium;
         this.dateReleased = dateReleased;
         this.title = title;
         this.rating = rating;
+        this.synopsis = synopsis;
+        this.author = author;
     }
-    public Item(Medium medium, Integer author, Date dateReleased, String title, Double rating, String synopsis) {
+    public Item(Medium medium, String author, Date dateReleased, String title, Double rating, String synopsis) {
        this.medium = medium;
        this.author = author;
        this.dateReleased = dateReleased;
@@ -103,11 +111,11 @@ public class Item  implements java.io.Serializable {
     public void setMedium(Medium medium) {
         this.medium = medium;
     }
-    public Integer getAuthor() {
+    public String getAuthor() {
         return this.author;
     }
     
-    public void setAuthor(Integer author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
     public Date getDateReleased() {

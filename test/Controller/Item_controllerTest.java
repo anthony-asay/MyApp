@@ -31,9 +31,10 @@ public class Item_controllerTest extends TestCase {
         String title = "";
         Double rating = null;
         String synopsis = "";
+        String author = "";
         Item_controller instance = new Item_controller();
         Integer expResult = null;
-        Integer result = instance.addItem(medium, dateReleased, title, rating, synopsis);
+        Integer result = instance.addItem(medium, dateReleased, title, rating, synopsis, author);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         

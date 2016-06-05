@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 package View;
-
+import Controller.JSONclass;
 import Controller.HibernateUtil;
 import Controller.Medium_controller;
 import Controller.Item_controller;
 import Model.Item;
 import Model.Medium;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
@@ -31,6 +35,14 @@ public class ItemsView extends javax.swing.JFrame {
     
     public ItemsView() {
         initComponents();
+//        JSONclass jsonClass = new JSONclass();
+//        List<Item> listOfItems = new ArrayList<Item>();
+//        try {
+//            listOfItems = jsonClass.getItemsJSON();
+//        } catch (IOException ex) {
+//            Logger.getLogger(ItemsView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println(listOfItems);
         List<Medium> mediums = mediumController.getMediums();
         //System.out.println(mediums);
         this.mediumBox.setModel(new DefaultComboBoxModel(mediums.toArray()));

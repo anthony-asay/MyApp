@@ -26,13 +26,13 @@ public class Item_controller {
    private static SessionFactory factory;
    private static JSONclass json = new JSONclass();
    
-   public Integer addItem(Medium medium, Date dateReleased, String title, Double rating, String synopsis){
+   public Integer addItem(Medium medium, Date dateReleased, String title, Double rating, String synopsis, String author){
       Session session = HibernateUtil.getSessionFactory().openSession();
       Transaction tx = null;
       Integer itemID = null;
       try{
          tx = session.beginTransaction();
-         Item item = new Item(medium, dateReleased, title, rating, synopsis);
+         Item item = new Item(medium, dateReleased, title, rating, synopsis, author);
          itemID = (Integer) session.save(item); 
          tx.commit();
           try {

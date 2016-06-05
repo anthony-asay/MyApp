@@ -11,7 +11,7 @@
         <many-to-one name="medium" class="Model.Medium" fetch="select">
             <column name="id_medium" not-null="true" />
         </many-to-one>
-        <property name="author" type="java.lang.Integer">
+        <property name="author" type="string">
             <column name="author" />
         </property>
         <property name="dateReleased" type="date">

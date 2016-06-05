@@ -39,19 +39,6 @@ public class AddItemView extends javax.swing.JFrame {
     public AddItemView() {
         initComponents();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        this.txtDate = new JFormattedTextField(df);
-        this.txtDate.addKeyListener(new KeyAdapter() {
-        public void keyTyped(KeyEvent e) {
-          char c = e.getKeyChar();
-          if (!((c >= '0') && (c <= '9') ||
-             (c == KeyEvent.VK_BACK_SPACE) ||
-             (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))        
-          {
-            JOptionPane.showMessageDialog(null, "Please Enter Valid");
-            e.consume();
-          }
-        }
-      });
         Integer[] ratingNumber = {1,2,3,4,5,6,7,8,9,10};
         this.ratingBox.setModel(new DefaultComboBoxModel(ratingNumber));
         this.ratingBox.insertItemAt("", 0);
@@ -84,6 +71,8 @@ public class AddItemView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         synopsisArea = new javax.swing.JTextArea();
         submitButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        authorField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,28 +110,23 @@ public class AddItemView extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Author:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(251, 251, 251)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                                .addComponent(mediumBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mediumBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(submitButton)
                         .addGroup(layout.createSequentialGroup()
@@ -150,8 +134,17 @@ public class AddItemView extends javax.swing.JFrame {
                             .addGap(60, 60, 60)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ratingBox, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(ratingBox, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
                 .addGap(0, 166, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +155,11 @@ public class AddItemView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -181,9 +178,9 @@ public class AddItemView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(submitButton)
-                .addGap(31, 31, 31))
+                .addContainerGap())
         );
 
         pack();
@@ -196,6 +193,7 @@ public class AddItemView extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Item_controller control = new Item_controller();
         String title = "";
+        String author = "";
         Medium medium = new Medium();
         Date date = new Date();
         double rating = 0;
@@ -205,10 +203,13 @@ public class AddItemView extends javax.swing.JFrame {
         {
             title = titleField.getText();
         }
+        if(!authorField.getText().equals(""))
+        {
+            author = authorField.getText();
+        }
         if(!mediumBox.getSelectedItem().equals(""))
         {
             medium = mediumController.getMediumByName(mediumBox.getSelectedItem().toString());
-            showMessageDialog(null, medium.getId());
         }
         if(!txtDate.getText().equals(""))
         {
@@ -233,10 +234,7 @@ public class AddItemView extends javax.swing.JFrame {
         
         if((title != "") && (medium.getId() != null))
         {
-            
-                control.addItem(medium, date, title, rating, synopsis);
-                showMessageDialog(null, "You successfully added an item!");
-            
+                control.addItem(medium, date, title, rating, synopsis, author);
         }
         else
         {
@@ -280,12 +278,14 @@ public class AddItemView extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField authorField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox mediumBox;
     private javax.swing.JComboBox ratingBox;
