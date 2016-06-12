@@ -11,22 +11,32 @@ import java.util.Date;
 public class MediaLog  implements java.io.Serializable {
 
 
-     private Integer id;
-     private Integer idUser;
-     private Integer idItem;
-     private BigDecimal rating;
-     private BigDecimal timeSpent;
+     private int id;
+     private User user;
+     private Medium medium;
+     private String item;
+     private Double rating;
+     private Double timeSpent;
      private Date dateFinished;
 
     public MediaLog() {
     }
 
-    public MediaLog(Integer idUser, Integer idItem, BigDecimal rating, BigDecimal timeSpent, Date dateFinished) {
-       this.idUser = idUser;
-       this.idItem = idItem;
+    public MediaLog(User user, Medium medium, String item, Double rating, Double timeSpent, Date dateFinished) {
+       this.user = user;
+       this.medium = medium;
+       this.item = item;
        this.rating = rating;
        this.timeSpent = timeSpent;
        this.dateFinished = dateFinished;
+    }
+    
+    public Medium getMedium() {
+        return this.medium;
+    }
+    
+    public void setMedium(Medium medium) {
+        this.medium = medium;
     }
    
     public Integer getId() {
@@ -36,32 +46,32 @@ public class MediaLog  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getIdUser() {
-        return this.idUser;
+    public User getUser() {
+        return this.user;
     }
     
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
-    public Integer getIdItem() {
-        return this.idItem;
+    public String getItem() {
+        return this.item;
     }
     
-    public void setIdItem(Integer idItem) {
-        this.idItem = idItem;
+    public void setItem(String item) {
+        this.item = item;
     }
-    public BigDecimal getRating() {
+    public Double getRating() {
         return this.rating;
     }
     
-    public void setRating(BigDecimal rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
-    public BigDecimal getTimeSpent() {
+    public Double getTimeSpent() {
         return this.timeSpent;
     }
     
-    public void setTimeSpent(BigDecimal timeSpent) {
+    public void setTimeSpent(Double timeSpent) {
         this.timeSpent = timeSpent;
     }
     public Date getDateFinished() {
