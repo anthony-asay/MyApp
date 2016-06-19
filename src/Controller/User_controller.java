@@ -63,36 +63,6 @@ public class User_controller {
        result = numberOne - numberTwo;
        return result;
    }
-  
-   public List listUsers( ){
-      Session session = HibernateUtil.getSessionFactory().openSession();
-      Transaction tx = null;
-      List<User> users = new ArrayList<User>();
-      try{
-         tx = session.beginTransaction();
-         users = session.createQuery("FROM User").list(); 
-         for (Iterator iterator = 
-                    users.iterator(); iterator.hasNext();){
-            User user = (User) iterator.next(); 
-            System.out.println("Username: " + user.getNameUser()); 
-            System.out.println("Email: " + user.getEmail());  
-         }
-         tx.commit();
-      }catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
-         e.printStackTrace(); 
-      }finally {
-         session.close(); 
-      }
-      return users;
-   }
-   
-//   public List<Item> getItems()
-//    {
-//        Item item = new Item();
-//        List<Item> list = item.items();
-//        return list;
-//    }
    
    public boolean updateUser(Integer userId, String nameUser, String password, String email){
       Session session = HibernateUtil.getSessionFactory().openSession();
@@ -115,7 +85,7 @@ public class User_controller {
       return true;
    }
    
-   public boolean deleteItem(Integer userId){
+   public boolean deleteUser(Integer userId){
       Session session = HibernateUtil.getSessionFactory().openSession();
       Transaction tx = null;
       try{
