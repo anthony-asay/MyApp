@@ -63,20 +63,6 @@ public class User_controllerTest extends TestCase {
     /**
      * Test of listUsers method, of class User_controller.
      */
-    public void testListUsers() {
-        System.out.println("listUsers");
-        User_controller instance = new User_controller();
-        boolean expResult = true;
-        boolean result = false;
-        List list = instance.listUsers();
-        if(!(list.isEmpty()))
-        {
-            result = true;
-        }
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of updateUser method, of class User_controller.
@@ -98,15 +84,15 @@ public class User_controllerTest extends TestCase {
     /**
      * Test of deleteItem method, of class User_controller.
      */
-    public void testDeleteItem() {
-        System.out.println("deleteItem");
-        Integer userId = null;
-        User_controller instance = new User_controller();
-        boolean expResult = false;
-        boolean result = instance.deleteItem(userId);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    public void testDeleteItem() {
+//        System.out.println("deleteItem");
+//        Integer userId = null;
+//        User_controller instance = new User_controller();
+//        boolean expResult = false;
+//        //boolean result = instance.deleteItem(userId);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }
