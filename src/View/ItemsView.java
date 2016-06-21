@@ -253,9 +253,9 @@ public class ItemsView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        Medium medium = new Medium();
-        List<Medium> mediums = medium.mediums();
-        System.out.println(mediums);
+//        Medium medium = new Medium();
+//        List<Medium> mediums = medium.mediums();
+//        System.out.println(mediums);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
