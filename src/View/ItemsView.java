@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-import Controller.JSONclass;
+import Controller.*;
 import Controller.HibernateUtil;
 import Controller.Medium_controller;
 import Controller.Item_controller;
@@ -30,6 +30,7 @@ import org.hibernate.Session;
  */
 public class ItemsView extends javax.swing.JFrame {
 
+    private Application_controller app = new Application_controller();
     private Item_controller itemController = new Item_controller();
     private static Medium_controller mediumController = new Medium_controller();
     
@@ -81,8 +82,9 @@ public class ItemsView extends javax.swing.JFrame {
     {
         Vector<String> tableHeaders = new Vector<String>();
         Vector tableData = new Vector();
-        tableHeaders.add("Id"); 
+        tableHeaders.add("Id");
         tableHeaders.add("Medium");
+        tableHeaders.add("Author");
         tableHeaders.add("Title");
         tableHeaders.add("Date Released");
 
@@ -92,6 +94,7 @@ public class ItemsView extends javax.swing.JFrame {
             Vector<Object> oneRow = new Vector<Object>();
             oneRow.add(item.getId());
             oneRow.add(item.getMedium().getTypeMedium());
+            oneRow.add(item.getAuthor());
             oneRow.add(item.getTitle());
             oneRow.add(item.getDateReleased());
             tableData.add(oneRow);
@@ -224,46 +227,46 @@ public class ItemsView extends javax.swing.JFrame {
     }//GEN-LAST:event_queryButtonActionPerformed
 
     private void addFormLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFormLinkActionPerformed
-        new AddItemView().setVisible(true);
+        app.getAddItemView(this);
     }//GEN-LAST:event_addFormLinkActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-//        Medium medium = new Medium();
-//        List<Medium> mediums = medium.mediums();
-//        System.out.println(mediums);
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ItemsView().setVisible(true);
-            }
-        });
-        
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ItemsView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+////        Medium medium = new Medium();
+////        List<Medium> mediums = medium.mediums();
+////        System.out.println(mediums);
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ItemsView().setVisible(true);
+//            }
+//        });
+//        
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFormLink;

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.*;
 import Controller.HibernateUtil;
 import Controller.Medium_controller;
 import Model.MediaLog;
@@ -23,6 +24,8 @@ import org.hibernate.Session;
  */
 public class MediaLogView extends javax.swing.JFrame {
 
+    private Application_controller app = new Application_controller();
+    private static MediaLog_controller control = new MediaLog_controller();
     private static Medium_controller mediumController = new Medium_controller();
    
     private static String QUERY_START = "from MediaLog m ";
@@ -37,6 +40,13 @@ public class MediaLogView extends javax.swing.JFrame {
         this.mediumBox.setModel(new DefaultComboBoxModel(mediums.toArray()));
         this.mediumBox.insertItemAt("", 0);
         this.mediumBox.setSelectedIndex(0);
+        Integer id = app.getUser().getId();
+        System.out.println(app.getUser());
+    }
+    
+    private void getMediaLogs(Integer id)
+    {
+        String query = "";
     }
     
     private void runQueryBasedOnTitle(String query) 
@@ -77,8 +87,8 @@ public class MediaLogView extends javax.swing.JFrame {
             MediaLog mediaLog = (MediaLog)o;
             Vector<Object> oneRow = new Vector<Object>();
             oneRow.add(mediaLog.getId());
-            oneRow.add(mediaLog.getMedium().getTypeMedium());
-            oneRow.add(mediaLog.getItem());
+//            oneRow.add(mediaLog.getMedium().getTypeMedium());
+//            oneRow.add(mediaLog.getItem());
             oneRow.add(mediaLog.getRating());
             oneRow.add(mediaLog.getTimeSpent());
             tableData.add(oneRow);
@@ -187,37 +197,37 @@ public class MediaLogView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MediaLogView().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MediaLogView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MediaLogView().setVisible(true);
+//            }
+//        });
+//    }
     
 //    private javax.swing.JButton addFormLink;
 //    private javax.swing.JTextField itemName;

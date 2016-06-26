@@ -8,19 +8,16 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <property name="idUser" type="int">
+        <property name="idUser" type="java.lang.Integer">
             <column name="id_user" />
         </property>
-        <many-to-one name="medium" class="Model.Medium" fetch="select">
-            <column name="id_medium" not-null="true" />
-        </many-to-one>
-        <property name="item" type="string">
-            <column name="item" />
+        <property name="idItem" type="java.lang.Integer">
+            <column name="id_item" />
         </property>
-        <property name="rating" type="double">
+        <property name="rating" type="big_decimal">
             <column name="rating" precision="2" scale="1" />
         </property>
-        <property name="timeSpent" type="double">
+        <property name="timeSpent" type="big_decimal">
             <column name="time_spent" precision="4" scale="1" />
         </property>
         <property name="dateFinished" type="timestamp">

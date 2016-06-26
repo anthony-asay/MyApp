@@ -32,10 +32,10 @@ public class MediaLog_controller {
       Transaction tx = null;
       Integer logID = null;
       try{
-         tx = session.beginTransaction();
-         MediaLog mediaLog = new MediaLog(user, medium, item, rating, timeSpent, dateFinished);
-         logID = (Integer) session.save(mediaLog); 
-         tx.commit();
+//         tx = session.beginTransaction();
+//         MediaLog mediaLog = new MediaLog(user, medium, item, rating, timeSpent, dateFinished);
+//         logID = (Integer) session.save(mediaLog); 
+//         tx.commit();
 //          try {
 //              json.AddItemJSON();
 //          } catch (IOException ex) {
@@ -59,8 +59,8 @@ public class MediaLog_controller {
          for (Iterator iterator = 
                     logs.iterator(); iterator.hasNext();){
             MediaLog mediaLog = (MediaLog) iterator.next(); 
-            System.out.println("Medium: " + mediaLog.getMedium().getTypeMedium());
-            System.out.println("Title: " + mediaLog.getItem()); 
+//            System.out.println("Medium: " + mediaLog.getMedium().getTypeMedium());
+//            System.out.println("Title: " + mediaLog.getItem()); 
             System.out.println("Rating: " + mediaLog.getRating());
             System.out.println("Time: " + mediaLog.getTimeSpent());
             System.out.println("Date Finished: " + mediaLog.getDateFinished()); 
@@ -88,11 +88,11 @@ public class MediaLog_controller {
          tx = session.beginTransaction();
          MediaLog mediaLog = 
                     (MediaLog)session.get(MediaLog.class, logId); 
-         mediaLog.setUser(user);
-         mediaLog.setMedium(medium);
-         mediaLog.setItem(item);
-         mediaLog.setRating(rating);
-         mediaLog.setTimeSpent(timeSpent);
+//         mediaLog.setUser(user);
+//         mediaLog.setMedium(medium);
+//         mediaLog.setItem(item);
+//         mediaLog.setRating(rating);
+//         mediaLog.setTimeSpent(timeSpent);
          mediaLog.setDateFinished(dateFinished);
 		 session.update(mediaLog); 
          tx.commit();

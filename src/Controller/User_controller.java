@@ -24,6 +24,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class User_controller {
+   private User model = new User();
    private static SessionFactory factory;
    private static JSONclass json = new JSONclass();
    
@@ -101,5 +102,18 @@ public class User_controller {
          session.close(); 
       }
       return true;
+   }
+   
+   public User getUser(Integer id)
+   {
+       User user = model.getUserById(id);
+       return user;
+   }
+   
+   public Integer authenticate(String name, String password)
+   {
+       Integer id = 0;
+       id = model.getUserByNameAndPassword(name, password);
+       return id;
    }
 }

@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.Item_controller;
+import Controller.*;
 import Controller.Medium_controller;
 import Model.Medium;
 import java.awt.event.KeyAdapter;
@@ -33,6 +33,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class AddItemView extends javax.swing.JFrame {
 
+    private Application_controller app = new Application_controller();
     private Item_controller itemController = new Item_controller();
     private static Medium_controller mediumController = new Medium_controller();
     
@@ -234,7 +235,8 @@ public class AddItemView extends javax.swing.JFrame {
         
         if((title != "") && (medium.getId() != null))
         {
-                control.addItem(medium, date, title, rating, synopsis, author);
+            control.addItem(medium, date, title, rating, synopsis, author);
+            app.getItemsView(this);
         }
         else
         {
