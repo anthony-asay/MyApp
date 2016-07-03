@@ -21,7 +21,7 @@ public class cli {
       int number; 
       int temp;
       Scanner sc = new Scanner(System.in);
-      Socket s = new Socket("jsontest.localhost", 1342);
+      Socket s = new Socket("127.0.0.1", 1342);
       Scanner sc1 = new Scanner(s.getInputStream());
       System.out.println("Enter any number");
       number = sc.nextInt();
