@@ -12,7 +12,11 @@ import Controller.JSONclass;
 import java.io.IOException;
 import java.util.List; 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator; 
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
  
@@ -54,14 +58,20 @@ public class Item_controller {
       Transaction tx = null;
       try{
          tx = session.beginTransaction();
-         List items = session.createQuery("FROM Item").list(); 
+         List items = session.createQuery("FROM Item").list();
+         Set<Item> itemSet = new HashSet<Item>();
+         Map mymap = new HashMap();
          for (Iterator iterator = 
                     items.iterator(); iterator.hasNext();){
             Item item = (Item) iterator.next(); 
+            itemSet.add(item);
+            mymap.put(item.getTitle(), item.getId());
             System.out.println("Title: " + item.getTitle()); 
             System.out.println("Medium: " + item.getMedium().getTypeMedium()); 
             System.out.println("Date Released: " + item.getDateReleased()); 
          }
+         System.out.println(mymap);
+         System.out.println(itemSet);
          tx.commit();
       }catch (HibernateException e) {
          if (tx!=null) tx.rollback();

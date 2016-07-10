@@ -12,6 +12,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 /**
  *
  * @author Anthony
@@ -36,6 +39,13 @@ public class JSONclass {
             listOfItems.add(list.get(i));
             i++;
         }
+        Set<Item> itemSet = new HashSet<Item>();
+        for(Iterator iterator = list.iterator(); iterator.hasNext();)
+        {
+            Item itemOld = (Item) iterator.next(); 
+            itemSet.add(itemOld);
+        }
+        System.out.println(itemSet.toString());
         String json = "array=" + listOfItems.toString();
         sendPOST(json, POST_URL);
         writeJsonToFile(listOfItems.toString());
